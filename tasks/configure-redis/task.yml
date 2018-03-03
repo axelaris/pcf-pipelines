@@ -8,7 +8,6 @@ image_resource:
 
 inputs:
   - name: pcf-pipelines
-  - name: configuration
 
 params:
   PRODUCT_IDENTIFIER:
