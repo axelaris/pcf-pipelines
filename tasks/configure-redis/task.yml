@@ -3,7 +3,12 @@ platform: linux
 
 image_resource:
   type: docker-image
-  source: {repository: rjain/buildbox}
+  source:
+    repository: czero/cflinuxfs2
+
+inputs:
+  - name: pcf-pipelines
+  - name: configuration
 
 params:
   PRODUCT_IDENTIFIER:
@@ -100,11 +105,6 @@ params:
   DEDICATED_NODE_INSTANCE_TYPE:
   DEDICATED_NODE_INSTANCES:
   DEDICATED_NODE_DISK_SIZE:
-
-inputs:
-  - name: pipelines-repo
-  - name: om-cli
-  - name: jq
 
 run:
   path: pipelines-repo/tasks/config-redis/task.sh

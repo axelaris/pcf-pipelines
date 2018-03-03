@@ -120,10 +120,10 @@ jobs:
   - task: configure-tile
     file: pcf-pipelines/tasks/configure-redis/task.yml
     params:
-      PRODUCT_IDENTIFIER: {{product_identifier}}
-      OPS_MGR_HOST: {{ops_mgr_host}}
-      OPS_MGR_USR: {{ops_mgr_usr}}
-      OPS_MGR_PWD: {{ops_mgr_pwd}}
+      PRODUCT_IDENTIFIER: {{product_slug}}
+      OPS_MGR_HOST: {{opsman_domain_or_ip_address}}
+      OPS_MGR_USR: {{opsman_admin_username}}
+      OPS_MGR_PWD: {{opsman_admin_password}}
       SINGLETON_JOBS_AZ: {{singleton_jobs_az}}
       OTHER_AZS: {{other_azs}}
       NETWORK_NAME: {{network_name}}
