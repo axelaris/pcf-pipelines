@@ -203,7 +203,6 @@ jobs:
       BACKUPS_SELECTOR_GCS_CRON_SCHEDULE: {{backups_selector_gcs_cron_schedule}}
       BACKUPS_SELECTOR_GCS_BG_SAVE_TIMEOUT: {{backups_selector_gcs_bg_save_timeout}}
       REDIS_ON_DEMAND_BROKER_SERVICE_INSTANCE_LIMIT: {{redis_on_demand_broker_service_instance_limit}}
-      REDIS_ON_DEMAND_BROKER_VM_EXTENSIONS: {{redis_on_demand_broker_vm_extensions}}
       CF_REDIS_BROKER_SERVICE_INSTANCE_LIMIT: {{cf_redis_broker_service_instance_limit}}
       CF_REDIS_BROKER_REDIS_MAXMEMORY: {{cf_redis_broker_redis_maxmemory}}
       REDIS_ON_DEMAND_BROKER_INSTANCE_TYPE: {{redis_on_demand_broker_instance_type}}

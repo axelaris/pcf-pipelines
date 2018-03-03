@@ -28,11 +28,11 @@ git_private_key:
 # Either opsman_client_id/opsman_client_secret or opsman_admin_username/opsman_admin_password needs to be specified.
 # If you are using opsman_admin_username/opsman_admin_password, edit opsman_client_id/opsman_client_secret to be an empty value.
 # If you are using opsman_client_id/opsman_client_secret, edit opsman_admin_username/opsman_admin_password to be an empty value.
-opsman_admin_username: admin
+opsman_admin_username: ((opsman_admin_username))
 opsman_admin_password: ((opsman_admin_password))
 opsman_client_id: 
 opsman_client_secret: 
-opsman_domain_or_ip_address: opsman.pcf-gcp.den.altoros.com
+opsman_domain_or_ip_address: ((opsman_domain))
 
 # Resource
 # ------------------------------
@@ -78,7 +78,7 @@ small_plan_selector_name: cache-small
 small_plan_selector_description: This plan provides a small dedicated Redis instance, tailored for caching use-cases with persistence to disk enabled
 small_plan_selector_cf_service_access: enable # (enable|disable|manual)
 small_plan_selector_az_single_select: us-central1-a
-small_plan_selector_vm_type: automatic #(nano|micro|micro.ram|etc)
+small_plan_selector_vm_type: small #(nano|micro|micro.ram|etc)
 small_plan_selector_disk_size: 5120 #(1024|2048|5120|etc)
 small_plan_selector_timeout: 3600
 small_plan_selector_tcp_keepalive: 60
@@ -147,7 +147,7 @@ redis_on_demand_broker_instances: 1
 redis_on_demand_broker_disk_size: 10240
 cf_redis_broker_instance_type: medium
 cf_redis_broker_disk_size: 10240
-dedicated_node_instance_type: micro.ram
+dedicated_node_instance_type: medium
 dedicated_node_instances: 5
 dedicated_node_disk_size: 5120
 
