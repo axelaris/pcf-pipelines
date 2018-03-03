@@ -106,4 +106,4 @@ params:
   DEDICATED_NODE_DISK_SIZE:
 
 run:
-  path: pipelines-repo/tasks/config-redis/task.sh
+  path: pcf-pipelines/tasks/configure-redis/task.sh
