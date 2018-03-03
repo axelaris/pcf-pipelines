@@ -1,22 +1,20 @@
 #!/bin/bash -ex
 
-chmod +x om-cli/om-linux
-OM_CMD=./om-cli/om-linux
+OM_CMD="om-linux"
 
-chmod +x ./jq/jq-linux64
-JQ_CMD=./jq/jq-linux64
+JQ_CMD="jq"
 
 PRODUCT_PROPERTIES=$(
   echo "{}" |
   $JQ_CMD -n \
     --arg syslog_selector "$SYSLOG_SELECTOR" \
     --arg syslog_address "$SYSLOG_ADDRESS" \
-    --argjson syslog_port "$SYSLOG_PORT" \
+    --arg syslog_port "$SYSLOG_PORT" \
     --arg syslog_transport "$SYSLOG_TRANSPORT" \
     --arg syslog_format "$SYSLOG_FORMAT" \
     --arg syslog_permitted_peer "$SYSLOG_PERMITTED_PEER" \
     --arg syslog_ca_cert "$SYSLOG_CA_CERT" \
-    --argjson metrics_polling_interval "$METRICS_POLLING_INTERVAL" \
+    --arg metrics_polling_interval "$METRICS_POLLING_INTERVAL" \
     --arg small_plan_selector "$SMALL_PLAN_SELECTOR" \
     --arg small_plan_selector_name "$SMALL_PLAN_SELECTOR_NAME" \
     --arg small_plan_selector_description "$SMALL_PLAN_SELECTOR_DESCRIPTION" \
@@ -24,11 +22,11 @@ PRODUCT_PROPERTIES=$(
     --arg small_plan_selector_az_single_select "$SMALL_PLAN_SELECTOR_AZ_SINGLE_SELECT" \
     --arg small_plan_selector_vm_type "$SMALL_PLAN_SELECTOR_VM_TYPE" \
     --arg small_plan_selector_disk_size "$SMALL_PLAN_SELECTOR_DISK_SIZE" \
-    --argjson small_plan_selector_timeout "$SMALL_PLAN_SELECTOR_TIMEOUT" \
-    --argjson small_plan_selector_tcp_keepalive "$SMALL_PLAN_SELECTOR_TCP_KEEPALIVE" \
-    --argjson small_plan_selector_maxclients "$SMALL_PLAN_SELECTOR_MAXCLIENTS" \
-    --argjson small_plan_selector_lua_scripting "$SMALL_PLAN_SELECTOR_LUA_SCRIPTING" \
-    --argjson small_plan_selector_instance_limit "$SMALL_PLAN_SELECTOR_INSTANCE_LIMIT" \
+    --arg small_plan_selector_timeout "$SMALL_PLAN_SELECTOR_TIMEOUT" \
+    --arg small_plan_selector_tcp_keepalive "$SMALL_PLAN_SELECTOR_TCP_KEEPALIVE" \
+    --arg small_plan_selector_maxclients "$SMALL_PLAN_SELECTOR_MAXCLIENTS" \
+    --arg small_plan_selector_lua_scripting "$SMALL_PLAN_SELECTOR_LUA_SCRIPTING" \
+    --arg small_plan_selector_instance_limit "$SMALL_PLAN_SELECTOR_INSTANCE_LIMIT" \
     --arg medium_plan_selector "$MEDIUM_PLAN_SELECTOR" \
     --arg medium_plan_selector_name "$MEDIUM_PLAN_SELECTOR_NAME" \
     --arg medium_plan_selector_description "$MEDIUM_PLAN_SELECTOR_DESCRIPTION" \
@@ -36,11 +34,11 @@ PRODUCT_PROPERTIES=$(
     --arg medium_plan_selector_az_single_select "$MEDIUM_PLAN_SELECTOR_AZ_SINGLE_SELECT" \
     --arg medium_plan_selector_vm_type "$MEDIUM_PLAN_SELECTOR_VM_TYPE" \
     --arg medium_plan_selector_disk_size "$MEDIUM_PLAN_SELECTOR_DISK_SIZE" \
-    --argjson medium_plan_selector_timeout "$MEDIUM_PLAN_SELECTOR_TIMEOUT" \
-    --argjson medium_plan_selector_tcp_keepalive "$MEDIUM_PLAN_SELECTOR_TCP_KEEPALIVE" \
-    --argjson medium_plan_selector_maxclients "$MEDIUM_PLAN_SELECTOR_MAXCLIENTS" \
-    --argjson medium_plan_selector_lua_scripting "$MEDIUM_PLAN_SELECTOR_LUA_SCRIPTING" \
-    --argjson medium_plan_selector_instance_limit "$MEDIUM_PLAN_SELECTOR_INSTANCE_LIMIT" \
+    --arg medium_plan_selector_timeout "$MEDIUM_PLAN_SELECTOR_TIMEOUT" \
+    --arg medium_plan_selector_tcp_keepalive "$MEDIUM_PLAN_SELECTOR_TCP_KEEPALIVE" \
+    --arg medium_plan_selector_maxclients "$MEDIUM_PLAN_SELECTOR_MAXCLIENTS" \
+    --arg medium_plan_selector_lua_scripting "$MEDIUM_PLAN_SELECTOR_LUA_SCRIPTING" \
+    --arg medium_plan_selector_instance_limit "$MEDIUM_PLAN_SELECTOR_INSTANCE_LIMIT" \
     --arg large_plan_selector "$LARGE_PLAN_SELECTOR" \
     --arg large_plan_selector_name "$LARGE_PLAN_SELECTOR_NAME" \
     --arg large_plan_selector_description "$LARGE_PLAN_SELECTOR_DESCRIPTION" \
@@ -48,11 +46,11 @@ PRODUCT_PROPERTIES=$(
     --arg large_plan_selector_az_single_select "$LARGE_PLAN_SELECTOR_AZ_SINGLE_SELECT" \
     --arg large_plan_selector_vm_type "$LARGE_PLAN_SELECTOR_VM_TYPE" \
     --arg large_plan_selector_disk_size "$LARGE_PLAN_SELECTOR_DISK_SIZE" \
-    --argjson large_plan_selector_timeout "$LARGE_PLAN_SELECTOR_TIMEOUT" \
-    --argjson large_plan_selector_tcp_keepalive "$LARGE_PLAN_SELECTOR_TCP_KEEPALIVE" \
-    --argjson large_plan_selector_maxclients "$LARGE_PLAN_SELECTOR_MAXCLIENTS" \
-    --argjson large_plan_selector_lua_scripting "$LARGE_PLAN_SELECTOR_LUA_SCRIPTING" \
-    --argjson large_plan_selector_instance_limit "$LARGE_PLAN_SELECTOR_INSTANCE_LIMIT" \
+    --arg large_plan_selector_timeout "$LARGE_PLAN_SELECTOR_TIMEOUT" \
+    --arg large_plan_selector_tcp_keepalive "$LARGE_PLAN_SELECTOR_TCP_KEEPALIVE" \
+    --arg large_plan_selector_maxclients "$LARGE_PLAN_SELECTOR_MAXCLIENTS" \
+    --arg large_plan_selector_lua_scripting "$LARGE_PLAN_SELECTOR_LUA_SCRIPTING" \
+    --arg large_plan_selector_instance_limit "$LARGE_PLAN_SELECTOR_INSTANCE_LIMIT" \
     --arg backups_selector "$BACKUPS_SELECTOR" \
     --arg backups_selector_s3_access_key_id "$BACKUPS_SELECTOR_S3_ACCESS_KEY_ID" \
     --arg backups_selector_s3_secret_access_key "$BACKUPS_SELECTOR_S3_SECRET_ACCESS_KEY" \
@@ -62,30 +60,29 @@ PRODUCT_PROPERTIES=$(
     --arg backups_selector_s3_bucket_name "$BACKUPS_SELECTOR_S3_BUCKET_NAME" \
     --arg backups_selector_s3_path "$BACKUPS_SELECTOR_S3_PATH" \
     --arg backups_selector_s3_cron_schedule "$BACKUPS_SELECTOR_S3_CRON_SCHEDULE" \
-    --argjson backups_selector_s3_bg_save_timeout "$BACKUPS_SELECTOR_S3_BG_SAVE_TIMEOUT" \
+    --arg backups_selector_s3_bg_save_timeout "$BACKUPS_SELECTOR_S3_BG_SAVE_TIMEOUT" \
     --arg backups_selector_scp_server "$BACKUPS_SELECTOR_SCP_SERVER" \
     --arg backups_selector_scp_user "$BACKUPS_SELECTOR_SCP_USER" \
     --arg backups_selector_scp_key "$BACKUPS_SELECTOR_SCP_KEY" \
     --arg backups_selector_scp_path "$BACKUPS_SELECTOR_SCP_PATH" \
-    --argjson backups_selector_scp_port "$BACKUPS_SELECTOR_SCP_PORT" \
+    --arg backups_selector_scp_port "$BACKUPS_SELECTOR_SCP_PORT" \
     --arg backups_selector_scp_cron_schedule "$BACKUPS_SELECTOR_SCP_CRON_SCHEDULE" \
-    --argjson backups_selector_scp_bg_save_timeout "$BACKUPS_SELECTOR_SCP_BG_SAVE_TIMEOUT" \
+    --arg backups_selector_scp_bg_save_timeout "$BACKUPS_SELECTOR_SCP_BG_SAVE_TIMEOUT" \
     --arg backups_selector_scp_fingerprint "$BACKUPS_SELECTOR_SCP_FINGERPRINT" \
     --arg backups_selector_azure_account "$BACKUPS_SELECTOR_AZURE_ACCOUNT" \
     --arg backups_selector_azure_storage_access_key "$BACKUPS_SELECTOR_AZURE_STORAGE_ACCESS_KEY" \
     --arg backups_selector_azure_path "$BACKUPS_SELECTOR_AZURE_PATH" \
     --arg backups_selector_azure_cron_schedule "$BACKUPS_SELECTOR_AZURE_CRON_SCHEDULE" \
-    --argjson backups_selector_azure_bg_save_timeout "$BACKUPS_SELECTOR_AZURE_BG_SAVE_TIMEOUT" \
+    --arg backups_selector_azure_bg_save_timeout "$BACKUPS_SELECTOR_AZURE_BG_SAVE_TIMEOUT" \
     --arg backups_selector_azure_container "$BACKUPS_SELECTOR_AZURE_CONTAINER" \
     --arg backups_selector_azure_blob_store_base_url "$BACKUPS_SELECTOR_AZURE_BLOB_STORE_BASE_URL" \
     --arg backups_selector_gcs_project_id "$BACKUPS_SELECTOR_GCS_PROJECT_ID" \
     --arg backups_selector_gcs_bucket_name "$BACKUPS_SELECTOR_GCS_BUCKET_NAME" \
     --arg backups_selector_gcs_service_account_json "$BACKUPS_SELECTOR_GCS_SERVICE_ACCOUNT_JSON" \
     --arg backups_selector_gcs_cron_schedule "$BACKUPS_SELECTOR_GCS_CRON_SCHEDULE" \
-    --argjson backups_selector_gcs_bg_save_timeout "$BACKUPS_SELECTOR_GCS_BG_SAVE_TIMEOUT" \
+    --arg backups_selector_gcs_bg_save_timeout "$BACKUPS_SELECTOR_GCS_BG_SAVE_TIMEOUT" \
     --arg redis_on_demand_broker_service_instance_limit "$REDIS_ON_DEMAND_BROKER_SERVICE_INSTANCE_LIMIT" \
-    --arg redis_on_demand_broker_vm_extensions "$REDIS_ON_DEMAND_BROKER_VM_EXTENSIONS" \
-    --argjson cf_redis_broker_service_instance_limit "$CF_REDIS_BROKER_SERVICE_INSTANCE_LIMIT" \
+    --arg cf_redis_broker_service_instance_limit "$CF_REDIS_BROKER_SERVICE_INSTANCE_LIMIT" \
     --arg cf_redis_broker_redis_maxmemory "$CF_REDIS_BROKER_REDIS_MAXMEMORY" \
     '
     . +
@@ -380,9 +377,6 @@ PRODUCT_PROPERTIES=$(
     {
       ".redis-on-demand-broker.service_instance_limit": {
         "value": $redis_on_demand_broker_service_instance_limit
-      },
-      ".redis-on-demand-broker.vm_extensions": {
-        "value": $redis_on_demand_broker_vm_extensions
       },
       ".cf-redis-broker.service_instance_limit": {
         "value": $cf_redis_broker_service_instance_limit

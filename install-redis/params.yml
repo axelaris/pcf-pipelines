@@ -73,13 +73,13 @@ syslog_format: # (rfc5424|job_index_id)
 syslog_permitted_peer:
 syslog_ca_cert:
 metrics_polling_interval: 30
-small_plan_selector: Plan Inactive # (Plan Inactive|Plan Active)
-small_plan_selector_name:
-small_plan_selector_description:
-small_plan_selector_cf_service_access: # (enable|disable|manual)
-small_plan_selector_az_single_select:
-small_plan_selector_vm_type: #(nano|micro|micro.ram|etc)
-small_plan_selector_disk_size: #(1024|2048|5120|etc)
+small_plan_selector: Plan Active # (Plan Inactive|Plan Active)
+small_plan_selector_name: cache-small
+small_plan_selector_description: This plan provides a small dedicated Redis instance, tailored for caching use-cases with persistence to disk enabled
+small_plan_selector_cf_service_access: enable # (enable|disable|manual)
+small_plan_selector_az_single_select: us-central1-a
+small_plan_selector_vm_type: automatic #(nano|micro|micro.ram|etc)
+small_plan_selector_disk_size: 5120 #(1024|2048|5120|etc)
 small_plan_selector_timeout: 3600
 small_plan_selector_tcp_keepalive: 60
 small_plan_selector_maxclients: 1000
@@ -90,7 +90,7 @@ medium_plan_selector_name:
 medium_plan_selector_description:
 medium_plan_selector_cf_service_access: # (enable|disable|manual)
 medium_plan_selector_az_single_select:
-medium_plan_selector_vm_type: #(nano|micro|micro.ram|etc)
+medium_plan_selector_vm_type: automatic #(nano|micro|micro.ram|etc)
 medium_plan_selector_disk_size: # (1024|2048|5120|etc)
 medium_plan_selector_timeout: 3600
 medium_plan_selector_tcp_keepalive: 60
@@ -102,7 +102,7 @@ large_plan_selector_name:
 large_plan_selector_description: This plan provides a large dedicated Redis instance, tailored for caching use-cases with persistence to disk enabled
 large_plan_selector_cf_service_access: # (enable|disable|manual)
 large_plan_selector_az_single_select:
-large_plan_selector_vm_type: #(nano|micro|micro.ram|etc)
+large_plan_selector_vm_type: automatic #(nano|micro|micro.ram|etc)
 large_plan_selector_disk_size: # (1024|2048|5120|etc)
 large_plan_selector_timeout: 3600
 large_plan_selector_tcp_keepalive: 60
@@ -140,7 +140,6 @@ backups_selector_gcs_service_account_json:
 backups_selector_gcs_cron_schedule: 0 0 * * *
 backups_selector_gcs_bg_save_timeout: 10
 redis_on_demand_broker_service_instance_limit: 20
-redis_on_demand_broker_vm_extensions: public_ip # (public_ip)
 cf_redis_broker_service_instance_limit: 5
 cf_redis_broker_redis_maxmemory: 512MB
 redis_on_demand_broker_instance_type: medium
